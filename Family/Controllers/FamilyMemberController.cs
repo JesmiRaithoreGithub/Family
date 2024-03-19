@@ -17,7 +17,7 @@ namespace Family.Controllers
           public ActionResult ViewAll()
         {
             DatabaseContext DatabaseContext = new DatabaseContext();
-            List<FamilyMember> familyMembers=DatabaseContext.FamilyMembers.ToList();
+            List<FamilyMember> familyMembers=DatabaseContext.FamilyMembers.ToList();  
             return View(familyMembers);
         }
 
