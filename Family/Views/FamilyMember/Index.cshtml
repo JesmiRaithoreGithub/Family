@@ -1,0 +1,21 @@
+﻿
+@using Family.Models
+@model IEnumerable<FamilyMember>
+
+@{
+    ViewBag.Title = "Family Members";
+}
+
+<h2>Family Members</h2>
+<div style="font-size:medium">
+    <ul>
+        @foreach (FamilyMember familyMember in Model)
+        {
+            <li>@Html.ActionLink(familyMember.Name,"Details","FamilyMember", new {id= familyMember.FamilyMemberId },null)</li>
+        }
+
+    </ul>
+
+</div>
+@Html.ActionLink("Back to Home", "Index","FamilyMemberType")
+

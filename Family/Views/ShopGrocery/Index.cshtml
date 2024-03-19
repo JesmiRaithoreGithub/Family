@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ShopGroceryBusinessLayer.Models.Grocery>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Grocery", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroceryItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfGroceryItem)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.GroceryItemTypeId)*@
+            @Html.DisplayName("GroceryItemType")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroceryItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfGroceryItem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroceryItemTypeId)
+           
+
+<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GroceryItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GroceryItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GroceryItemId })
+        </td>
+    </tr>
+}
+
+</table>

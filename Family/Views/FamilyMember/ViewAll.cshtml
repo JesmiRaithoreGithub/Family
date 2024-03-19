@@ -1,0 +1,22 @@
+﻿@using Family.Models
+@model IEnumerable<Family.Models.FamilyMember>
+
+@{
+    ViewBag.Title = "ViewAll";
+}
+
+<h2>ViewAll Family Members</h2>
+<div style="font-size:medium">
+    <ul>
+
+        @foreach (FamilyMember familyMember in @Model)
+        {
+            <li> @Html.ActionLink(familyMember.Name, "Details", new { id = familyMember.FamilyMemberId })</li>
+        }
+
+    </ul>
+</div>
+@*<a href="javascript:history.back()">Back to List</a><br />*@
+@*@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })*@
+@Html.ActionLink("Back to Home", "Index", "FamilyMemberType")
+

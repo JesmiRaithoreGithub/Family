@@ -1,0 +1,29 @@
+﻿@model Family.Models.FamilyMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table style="font-family:Arial; font-size:medium">
+    <tr>
+        <td>Name</td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>@Model.Gender</td>
+    </tr>
+    <tr>
+        <td>City</td>
+        <td>@Model.City</td>
+    </tr>
+    <tr>
+        <td>Work</td>
+        <td>@Model.Job</td>
+    </tr>
+
+</table>
+@*@Html.ActionLink("Back to Family Members List","Index", new { id= Model.FamilyMemberTypeId})*@
+<a href="javascript:history.back()">Back to List</a>
