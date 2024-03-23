@@ -147,6 +147,8 @@
     <Content Include="Views\ShopGrocery\Index.cshtml" />
     <Content Include="Views\ShopGrocery\Create.cshtml" />
     <Content Include="Views\ShopGrocery\ItemType.cshtml" />
+    <Content Include="Views\FamilyMember\Edit.cshtml" />
+    <Content Include="Views\ShopGrocery\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
