@@ -72,6 +72,41 @@ namespace ShopGroceryBusinessLayer.Models
 
         }
 
+        public void EditGrocery(Grocery grocery)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection sqlConnection= new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spSaveGrocery", sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter sqlParameterGroceryItemId = new SqlParameter();
+                sqlParameterGroceryItemId.ParameterName = "@GroceryItemId";
+                sqlParameterGroceryItemId.Value = grocery.GroceryItemId;
+                sqlCommand.Parameters.Add(sqlParameterGroceryItemId);
+
+                SqlParameter sqlParameterGroceryItemName = new SqlParameter();
+                sqlParameterGroceryItemName.ParameterName = "@GroceryItemName";
+                sqlParameterGroceryItemName.Value = grocery.GroceryItemName;
+                sqlCommand.Parameters.Add(sqlParameterGroceryItemName);
+
+                SqlParameter sqlParameterNoOfGroceryItem = new SqlParameter();
+                sqlParameterNoOfGroceryItem.ParameterName = "@NoOfGroceryItem";
+                sqlParameterNoOfGroceryItem.Value = grocery.NoOfGroceryItem;
+                sqlCommand.Parameters.Add(sqlParameterNoOfGroceryItem);
+
+                SqlParameter sqlParameterGroceryItemTypeId = new SqlParameter();
+                sqlParameterGroceryItemTypeId.ParameterName = "@GroceryItemTypeId";
+                sqlParameterGroceryItemTypeId.Value = grocery.GroceryItemTypeId;
+                sqlCommand.Parameters.Add(sqlParameterGroceryItemTypeId);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+            }
+        }
+
         public IEnumerable<GroceryType> GroceryTypes
         {
             get

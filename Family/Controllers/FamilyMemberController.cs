@@ -73,10 +73,18 @@ namespace Family.Controllers
         {
             BusinessLayer businesslayer = new BusinessLayer();
             FamilyMemberDetails familyMemberDetails= businesslayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId == id);
-            ViewBag.Gender = new SelectList(familyMemberDetails.Gender);
 
-           // ViewBag.GroceryItemTypeId = new SelectList(groceryList, "GroceryItemTypeId", "GroceryItemTypeName");
-
+            return View(familyMemberDetails);
+        }
+        [HttpPost]
+        public ActionResult Edit(FamilyMemberDetails familyMemberDetails)
+        {
+            if (ModelState.IsValid)
+            { 
+            BusinessLayer businessLayer = new BusinessLayer();
+            businessLayer.SaveFamilymember(familyMemberDetails);
+            return RedirectToAction("ViewFamilyMemberWithDetails");
+            }
             return View(familyMemberDetails);
         }
     }

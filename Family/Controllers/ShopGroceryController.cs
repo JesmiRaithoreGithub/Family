@@ -90,5 +90,18 @@ namespace Family.Controllers
 
             return View(grocery);
         }
+
+        [HttpPost]
+        public ActionResult Edit(Grocery grocery)
+        {
+            if (ModelState.IsValid)
+            {
+                GroceryRepository groceryRepository = new GroceryRepository();
+                groceryRepository.EditGrocery(grocery);
+                return RedirectToAction("Index");
+            }
+
+            return View(grocery);
+        }
     }
 }
