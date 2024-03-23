@@ -67,48 +67,101 @@ namespace Family.Controllers
             return View();
         }
 
-        /*[HttpPost]
-        public ActionResult Create(FormCollection formCollection)
+        [HttpGet]
+        [ActionName("Edit")]
+        public ActionResult Get_Edit(int id)
         {
-            foreach (string key in formCollection)
-            {
-                //Response.Write("The key is "+key);
-                Response.Write("The form collection key is "+key +"  "+formCollection[key]);
-                Response.Write("</br>");
+            BusinessLayer businesslayer = new BusinessLayer();
+            FamilyMemberDetails familyMemberDetails= businesslayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId == id);
+            ViewBag.Gender = new SelectList(familyMemberDetails.Gender);
 
-                FamilyMemberDetails familyMemberDetails = new FamilyMemberDetails();
-                familyMemberDetails.Name = formCollection["Name"];
-                familyMemberDetails.Gender = formCollection["Gender"];
-                familyMemberDetails.City = formCollection["City"];
-                familyMemberDetails.Job = formCollection["Job"];
-                familyMemberDetails.FamilyMemberTypeId = Convert.ToInt32(formCollection["FamilyMemberTypeId"]);
+           // ViewBag.GroceryItemTypeId = new SelectList(groceryList, "GroceryItemTypeId", "GroceryItemTypeName");
 
-              BusinessLayer businessLayer = new BusinessLayer();
-
-                businessLayer.AddFamilyMember(familyMemberDetails);
-                return RedirectToAction("ViewFamilyMemberWithDetails");
-            }
-            return View();
-        }*/
-
-
-        /*  [HttpPost]
-          public ActionResult Create(string Name, string Gender, string City, string Job, int FamilyMemberTypeId)
-      {
-          FamilyMemberDetails familyMemberDetails = new FamilyMemberDetails();
-          familyMemberDetails.Name = Name;
-          familyMemberDetails.Gender = Gender;
-          familyMemberDetails.City = City;
-          familyMemberDetails.Job = Job;
-          familyMemberDetails.FamilyMemberTypeId = Convert.ToInt32(FamilyMemberTypeId);
-
-          BusinessLayer businessLayer = new BusinessLayer();
-
-          businessLayer.AddFamilyMember(familyMemberDetails);
-          return RedirectToAction("ViewFamilyMemberWithDetails");
-
-      }*/
-
-
+            return View(familyMemberDetails);
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*[HttpPost]
+public ActionResult Create(FormCollection formCollection)
+{
+    foreach (string key in formCollection)
+    {
+        //Response.Write("The key is "+key);
+        Response.Write("The form collection key is "+key +"  "+formCollection[key]);
+        Response.Write("</br>");
+
+        FamilyMemberDetails familyMemberDetails = new FamilyMemberDetails();
+        familyMemberDetails.Name = formCollection["Name"];
+        familyMemberDetails.Gender = formCollection["Gender"];
+        familyMemberDetails.City = formCollection["City"];
+        familyMemberDetails.Job = formCollection["Job"];
+        familyMemberDetails.FamilyMemberTypeId = Convert.ToInt32(formCollection["FamilyMemberTypeId"]);
+
+      BusinessLayer businessLayer = new BusinessLayer();
+
+        businessLayer.AddFamilyMember(familyMemberDetails);
+        return RedirectToAction("ViewFamilyMemberWithDetails");
+    }
+    return View();
+}*/
+
+
+/*  [HttpPost]
+  public ActionResult Create(string Name, string Gender, string City, string Job, int FamilyMemberTypeId)
+{
+  FamilyMemberDetails familyMemberDetails = new FamilyMemberDetails();
+  familyMemberDetails.Name = Name;
+  familyMemberDetails.Gender = Gender;
+  familyMemberDetails.City = City;
+  familyMemberDetails.Job = Job;
+  familyMemberDetails.FamilyMemberTypeId = Convert.ToInt32(FamilyMemberTypeId);
+
+  BusinessLayer businessLayer = new BusinessLayer();
+
+  businessLayer.AddFamilyMember(familyMemberDetails);
+  return RedirectToAction("ViewFamilyMemberWithDetails");
+
+}*/
+
+

@@ -77,5 +77,18 @@ namespace Family.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        [ActionName("Edit")]
+        public ActionResult Get_Edit(int id)
+        {
+            GroceryRepository groceryRepository = new GroceryRepository();
+            Grocery grocery= groceryRepository.Groceries.Single(gr => gr.GroceryItemId == id);
+            var groceryList = groceryRepository.GroceryTypes.ToList();
+
+            ViewBag.GroceryItemTypeId = new SelectList(groceryList, "GroceryItemTypeId", "GroceryItemTypeName");
+
+            return View(grocery);
+        }
     }
 }

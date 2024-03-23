@@ -17,6 +17,8 @@ namespace Family.Models
 
         public DbSet<GroceryType> GroceryTypes { get; set; }
 
+        
+
         //public DbSet<FamilyMemberDetails> FamilyMemberDetails { get; set; }
     }
 }
