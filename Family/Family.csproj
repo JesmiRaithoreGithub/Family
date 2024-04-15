@@ -118,6 +118,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\FamilyMemberController.cs" />
     <Compile Include="Controllers\FamilyMemberTypeController.cs" />
+    <Compile Include="Controllers\GroceryTypeController.cs" />
     <Compile Include="Controllers\ShopGroceryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,9 +147,11 @@
     <Content Include="Views\FamilyMember\Create.cshtml" />
     <Content Include="Views\ShopGrocery\Index.cshtml" />
     <Content Include="Views\ShopGrocery\Create.cshtml" />
-    <Content Include="Views\ShopGrocery\ItemType.cshtml" />
     <Content Include="Views\FamilyMember\Edit.cshtml" />
     <Content Include="Views\ShopGrocery\Edit.cshtml" />
+    <Content Include="Views\GroceryType\ItemType.cshtml" />
+    <Content Include="Views\GroceryType\AddItemType.cshtml" />
+    <Content Include="Views\GroceryType\EditItemType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

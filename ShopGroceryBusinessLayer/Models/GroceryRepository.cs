@@ -128,7 +128,7 @@ namespace ShopGroceryBusinessLayer.Models
                         GroceryType groceryType = new GroceryType();
                         groceryType.GroceryItemTypeId = Convert.ToInt32(sqlDataReader["GroceryItem_Type_Id"]);
                         groceryType.GroceryItemTypeName = sqlDataReader["GroceryItem_Type_Name"].ToString();
-                        
+
                         GroceryTypes.Add(groceryType);
                     }
                 }
