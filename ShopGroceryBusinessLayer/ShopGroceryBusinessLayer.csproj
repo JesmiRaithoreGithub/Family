@@ -106,6 +106,7 @@
     <Compile Include="Models\Grocery.cs" />
     <Compile Include="Models\GroceryRepository.cs" />
     <Compile Include="Models\GroceryType.cs" />
+    <Compile Include="Models\GroceryTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

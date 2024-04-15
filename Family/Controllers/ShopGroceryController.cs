@@ -35,13 +35,6 @@ namespace Family.Controllers
          }*/
 
 
-        public ActionResult ItemType()
-        {
-            GroceryRepository groceryRepository = new GroceryRepository();
-            List<GroceryType> groceryTypes = groceryRepository.GroceryTypes.ToList();
-            return View(groceryTypes);
-        }
-
         [HttpGet]
         [ActionName("Create")]
         public ActionResult Create_Get()

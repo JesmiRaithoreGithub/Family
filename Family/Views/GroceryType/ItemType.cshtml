@@ -7,7 +7,7 @@
 <h2>ItemType</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "AddItemType")
 </p>
 <table class="table">
     <tr>
@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => item.GroceryItemTypeName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GroceryItemTypeId }) |
+            @Html.ActionLink("Edit", "EditItemType", new { id=item.GroceryItemTypeId }) |
             @Html.ActionLink("Details", "Details", new { id=item.GroceryItemTypeId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.GroceryItemTypeId })
         </td>
