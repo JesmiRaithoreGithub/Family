@@ -23,7 +23,7 @@ namespace FamilyBusinessLayer.Models
          [Required]
          public int FamilyMemberTypeId { get; set; }
      }*/
-
+       
       public interface IFamilyMemberDetails
     {
         int FamilyMemberId { get; set; }

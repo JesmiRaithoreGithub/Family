@@ -140,7 +140,7 @@ namespace Family.Controllers
                 businessLayer.SaveFamilymember(familyMemberDetails);
                 return RedirectToAction("ViewFamilyMemberWithDetails");
             }
-            return View(familyMemberDetails);
+            return View(familyMemberDetails);  
         }
     }
 }
