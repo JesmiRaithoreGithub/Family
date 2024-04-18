@@ -19,7 +19,7 @@ namespace FamilyBusinessLayer.Models
          [Required]
          public string City { get; set; }
          [Required]
-         public string Job { get; set; }
+         public string Job { get; set; }  
          [Required]
          public int FamilyMemberTypeId { get; set; }
      }*/

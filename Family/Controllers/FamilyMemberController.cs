@@ -81,7 +81,7 @@ namespace Family.Controllers
         {
             if (ModelState.IsValid)
             { 
-            BusinessLayer businessLayer = new BusinessLayer();
+            BusinessLayer businessLayer = new BusinessLayer();  
             businessLayer.SaveFamilymember(familyMemberDetails);
             return RedirectToAction("ViewFamilyMemberWithDetails");
             }
