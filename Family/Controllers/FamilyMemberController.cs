@@ -76,16 +76,71 @@ namespace Family.Controllers
 
             return View(familyMemberDetails);
         }
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Edit(FamilyMemberDetails familyMemberDetails)
         {
             if (ModelState.IsValid)
             { 
-            BusinessLayer businessLayer = new BusinessLayer();
+            BusinessLayer businessLayer = new BusinessLayer();  
             businessLayer.SaveFamilymember(familyMemberDetails);
             return RedirectToAction("ViewFamilyMemberWithDetails");
             }
             return View(familyMemberDetails);
+        }*/
+
+    /*----UpdateModel include & exclude properties helps to specify the field that we do not want
+      to edit(unintended updates) even if it is specified in model repositories and view----*/
+
+        /*[HttpPost]
+        public ActionResult Edit(int id)
+        {
+            BusinessLayer businessLayer = new BusinessLayer();
+            FamilyMemberDetails familyMemberDetails= businessLayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId == id);
+            UpdateModel(familyMemberDetails, new string[] { "FamilyMemberId", "Gender", "City", "Job", "FamilyMemberTypeId" });
+            //UpdateModel(familyMemberDetails, null, null, new string[] { "Name" }); 
+        
+        /*  if (ModelState.IsValid)
+          {
+
+              businessLayer.SaveFamilymember(familyMemberDetails);
+              return RedirectToAction("ViewFamilyMemberWithDetails");
+          }
+          return View(familyMemberDetails);
+      }*/
+
+        /*---- Using Bind Attribute---*/
+
+        /* [HttpPost]
+        public ActionResult Edit([Bind(Include = "FamilyMemberId, Gender, City, Job, FamilyMemberTypeId")] FamilyMemberDetails familyMemberDetails)
+        {
+            BusinessLayer businessLayer = new BusinessLayer();
+            familyMemberDetails.Name = businessLayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId == familyMemberDetails.FamilyMemberId).Name;
+          
+            if (ModelState.IsValid)
+            {
+
+                businessLayer.SaveFamilymember(familyMemberDetails);
+                return RedirectToAction("ViewFamilyMemberWithDetails");
+            }
+            return View(familyMemberDetails);
+        }*/
+
+    /*----Using Interface----*/
+
+        [HttpPost]
+        public ActionResult Edit(int id)
+        {
+            BusinessLayer businessLayer = new BusinessLayer();
+            FamilyMemberDetails familyMemberDetails = businessLayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId == id);
+            UpdateModel<IFamilyMemberDetails>(familyMemberDetails);
+
+            if (ModelState.IsValid)
+            {
+
+                businessLayer.SaveFamilymember(familyMemberDetails);
+                return RedirectToAction("ViewFamilyMemberWithDetails");
+            }
+            return View(familyMemberDetails);  
         }
     }
 }
