@@ -187,7 +187,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54037</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Family</IISUrl>
+          <IISUrl>http://localhost:54037/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
