@@ -27,43 +27,51 @@
             @*@Html.DisplayNameFor(model => model.FamilyMemberTypeId)*@
 
             @Html.DisplayName("FamilyMemberType")
-          
+
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Job)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.FamilyMemberTypeId)*@
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("Delete", "FamilyMember", new { id = item.FamilyMemberId }))
+        {
+            <tr>
 
-            @if (item.FamilyMemberTypeId == 1)
-            {
-                @Html.DisplayName("Adult")
-            }
-            else
-            {
-                @Html.DisplayName("Children")
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FamilyMemberId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FamilyMemberId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FamilyMemberId })
-        </td>
-    </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.FamilyMemberTypeId)*@
+
+                    @if (item.FamilyMemberTypeId == 1)
+                    {
+                        @Html.DisplayName("Adult")
+                    }
+                    else
+                    {
+                        @Html.DisplayName("Children")
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FamilyMemberId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FamilyMemberId }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.FamilyMemberId })*@
+
+       <input type="submit" value="Delete" class="btn btn-info" onclick="return confirm
+('Are you sure you want to delete Family Member with Name=@item.Name')" />
+                </td>
+            </tr>
+        }
+    }
 
 </table>

@@ -131,5 +131,25 @@ namespace FamilyBusinessLayer.Models
                 
             }
         }
+
+        public void DeleteFamilyMember(FamilyMemberDetails familyMemberDetails)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection sqlConnection= new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spDeleteFamilyMember", sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter sqlParameter = new SqlParameter();
+                sqlParameter.ParameterName = "@FamilyMemberId";
+                sqlParameter.Value = familyMemberDetails.FamilyMemberId;
+                sqlCommand.Parameters.Add(sqlParameter);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
     }
+
 }
