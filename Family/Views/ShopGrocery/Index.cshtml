@@ -23,24 +23,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroceryItemName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoOfGroceryItem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroceryItemTypeId)
-           
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("Delete", "ShopGrocery", new { id = item.GroceryItemId }))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroceryItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoOfGroceryItem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroceryItemTypeId)
 
-<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GroceryItemId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GroceryItemId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GroceryItemId })
-        </td>
-    </tr>
-}
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GroceryItemId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.GroceryItemId }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.GroceryItemId })*@
+
+ <input type="submit" value="Delete" class="btn-info" 
+        onclick="return confirm('Do you really want to delete @item.GroceryItemName?')"/>
+
+                </td>
+            </tr>
+        }}
 
 </table>
