@@ -142,6 +142,21 @@ namespace Family.Controllers
             }
             return View(familyMemberDetails);  
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            BusinessLayer businessLayer = new BusinessLayer();
+            FamilyMemberDetails familyMemberDetails= businessLayer.FamilyMembersDetails.Single(fm => fm.FamilyMemberId== id);
+
+            if (ModelState.IsValid)
+            {
+                businessLayer.DeleteFamilyMember(familyMemberDetails);
+                return RedirectToAction("ViewFamilyMemberWithDetails");
+            }
+
+            return View();
+        }
     }
 }
 
