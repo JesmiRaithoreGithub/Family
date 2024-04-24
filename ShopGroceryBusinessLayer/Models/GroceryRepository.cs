@@ -107,6 +107,25 @@ namespace ShopGroceryBusinessLayer.Models
             }
         }
 
+        public void DeleteGrocery(Grocery grocery)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+
+            using (SqlConnection sqlConnection= new SqlConnection(connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand("spDeleteGrocery",sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter sqlParameter = new SqlParameter();
+                sqlParameter.ParameterName = "@GroceryItem_id";
+                sqlParameter.Value = grocery.GroceryItemId;
+                sqlCommand.Parameters.Add(sqlParameter);
+
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+        }
+
         public IEnumerable<GroceryType> GroceryTypes
         {
             get

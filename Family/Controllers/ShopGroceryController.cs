@@ -96,5 +96,20 @@ namespace Family.Controllers
 
             return View(grocery);
         }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            GroceryRepository groceryRepository = new GroceryRepository();
+            Grocery grocery= groceryRepository.Groceries.Single(gr => gr.GroceryItemId == id);
+           
+            if (ModelState.IsValid)
+            {
+                groceryRepository.DeleteGrocery(grocery);
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
     }
 }
