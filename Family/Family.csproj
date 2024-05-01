@@ -51,6 +51,8 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -103,8 +105,25 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\TaskDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TaskDataModel.edmx</DependentUpon>
+      <LastGenOutput>TaskDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TaskDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TaskDataModel.edmx</DependentUpon>
+      <LastGenOutput>TaskDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\TaskDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TaskDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TaskDataModel.edmx.diagram">
+      <DependentUpon>TaskDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -119,14 +138,35 @@
     <Compile Include="Controllers\FamilyMemberController.cs" />
     <Compile Include="Controllers\FamilyMemberTypeController.cs" />
     <Compile Include="Controllers\GroceryTypeController.cs" />
-    <Compile Include="Controllers\ShopGroceryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopGroceryController.cs" />
+    <Compile Include="Controllers\TaskJobController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\FamilyMember.cs" />
+    <Compile Include="Models\FamilyMember.cs">
+      <DependentUpon>TaskDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\FamilyMemberType.cs" />
+    <Compile Include="Models\Task.cs">
+      <DependentUpon>TaskDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +192,11 @@
     <Content Include="Views\GroceryType\ItemType.cshtml" />
     <Content Include="Views\GroceryType\AddItemType.cshtml" />
     <Content Include="Views\GroceryType\EditItemType.cshtml" />
+    <Content Include="Views\TaskJob\Create.cshtml" />
+    <Content Include="Views\TaskJob\Delete.cshtml" />
+    <Content Include="Views\TaskJob\Details.cshtml" />
+    <Content Include="Views\TaskJob\Edit.cshtml" />
+    <Content Include="Views\TaskJob\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -171,6 +216,9 @@
       <Project>{9c795441-b169-4713-a4e9-ca67a9e428e0}</Project>
       <Name>ShopGroceryBusinessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
