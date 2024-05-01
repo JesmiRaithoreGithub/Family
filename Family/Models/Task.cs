@@ -17,10 +17,19 @@ namespace Family.Models
     {
         [Key]
         public int Task_Id { get; set; }
+        [Required]
+        [Display(Name = "Task Name")]
         public string Task_Name { get; set; }
+        [Required]
+        [Display(Name = "Task Preparation")]
         public string Task_Preparation { get; set; }
+        [Required]
+        [Display(Name = "Task Duration")]
         public Nullable<int> Task_Duration { get; set; }
+        [Required]
+        [Display(Name = "Task Status")]
         public string Task_Status { get; set; }
+        [Required]
         public Nullable<int> Task_FamilyMemberId { get; set; }
     
         public virtual FamilyMember FamilyMember { get; set; }
