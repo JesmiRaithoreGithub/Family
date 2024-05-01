@@ -49,6 +49,7 @@ namespace Family.Models
         [Key]
         public int FamilyMemberId { get; set; }
         [Display(Name="Assigned Name")]
+        [Required]
         public string Name { get; set; }
         public string Gender { get; set; }
         public string City { get; set; }
