@@ -19,7 +19,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Task_Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Task_Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DisplayFor(model => model.Task_Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.Task_Name, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Task_Name, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -51,9 +52,9 @@
            new SelectListItem{Text="Completed", Value="Completed"}
 
        },"Select Status")
+         
 
-
-            @Html.ValidationMessageFor(model => model.Task_Status, "", new { @class = "text-danger" })
+           @Html.ValidationMessageFor(model => model.Task_Status, "", new { @class = "text-danger" })
         </div>
     </div>
 

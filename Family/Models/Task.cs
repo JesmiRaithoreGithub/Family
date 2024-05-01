@@ -17,7 +17,7 @@ namespace Family.Models
     {
         [Key]
         public int Task_Id { get; set; }
-        [Required]
+       
         [Display(Name = "Task Name")]
         public string Task_Name { get; set; }
         [Required]
