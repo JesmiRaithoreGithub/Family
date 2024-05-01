@@ -50,6 +50,10 @@ namespace Family.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Task_Id,Task_Name,Task_Preparation,Task_Duration,Task_Status,Task_FamilyMemberId")] Task task)
         {
+            if (string.IsNullOrEmpty(task.Task_Name))
+            {
+                ModelState.AddModelError("Task_Name","Name Field is required");
+            }
             if (ModelState.IsValid)
             {
                 db.Tasks.Add(task);
@@ -82,11 +86,22 @@ namespace Family.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Task_Id,Task_Name,Task_Preparation,Task_Duration,Task_Status,Task_FamilyMemberId")] Task task)
+       // public ActionResult Edit([Bind(Include = "Task_Id,Task_Name,Task_Preparation,Task_Duration,Task_Status,Task_FamilyMemberId")] Task task)
+       public ActionResult Edit([Bind(Exclude  = "Task_Name")] Task task)
         {
+            Task Taskdb = db.Tasks.Single(x => x.Task_Id == task.Task_Id);
+
+            //Taskdb.Task_Id = task.Task_Id;
+            Taskdb.Task_Preparation = task.Task_Preparation;
+            Taskdb.Task_Duration = task.Task_Duration;
+            Taskdb.Task_Status = task.Task_Status;
+            Taskdb.Task_FamilyMemberId = task.Task_FamilyMemberId;
+            task.Task_Name = Taskdb.Task_Name;
+
+
             if (ModelState.IsValid)
             {
-                db.Entry(task).State = EntityState.Modified;
+                db.Entry(Taskdb).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
