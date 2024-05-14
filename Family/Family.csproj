@@ -148,6 +148,7 @@
       <DependentUpon>TaskDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Models\FamilyMemberTotals.cs" />
     <Compile Include="Models\FamilyMemberType.cs" />
     <Compile Include="Models\Task.cs">
       <DependentUpon>TaskDataModel.tt</DependentUpon>
@@ -167,6 +168,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TaskDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TaskFamilyTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +199,7 @@
     <Content Include="Views\TaskJob\Details.cshtml" />
     <Content Include="Views\TaskJob\Edit.cshtml" />
     <Content Include="Views\TaskJob\Index.cshtml" />
+    <Content Include="Views\TaskJob\TaskByFamily.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
