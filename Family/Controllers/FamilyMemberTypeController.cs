@@ -16,5 +16,12 @@ namespace Family.Controllers
             List<FamilyMemberType> familyMemberTypes = DatabaseContext.FamilyMemberTypes.ToList();
             return View(familyMemberTypes);
         }
+
+       /* public ActionResult FamilyMemberByTypeTotal()
+        {
+            DatabaseContext DatabaseContext = new DatabaseContext();
+           var familyMember= DatabaseContext.FamilyMember.Include("FamilyMember")
+                .GroupBy(x=>)
+        }*/
     }
 }

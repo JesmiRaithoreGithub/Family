@@ -21,6 +21,18 @@ namespace Family.Controllers
             return View(tasks.ToList());
         }
 
+        public ActionResult TaskByFamily()
+        {
+            var tasks = db.Tasks.Include(t => t.FamilyMember)
+                .GroupBy(x => x.FamilyMember.Name)
+                .Select(y => new TaskFamilyTotal
+                {
+                    Name = y.Key,
+                    Total = y.Count()
+                }).ToList().OrderByDescending(y => y.Total);
+            return View(tasks);
+        }
+
         // GET: TaskJob/Details/5
         public ActionResult Details(int? id)
         {
