@@ -200,6 +200,7 @@
     <Content Include="Views\TaskJob\Edit.cshtml" />
     <Content Include="Views\TaskJob\Index.cshtml" />
     <Content Include="Views\TaskJob\TaskByFamily.cshtml" />
+    <Content Include="Views\TaskJob\PracticeView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
