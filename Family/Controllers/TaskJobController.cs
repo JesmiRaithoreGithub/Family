@@ -15,6 +15,10 @@ namespace Family.Controllers
         private TaskContext db = new TaskContext();
 
         // GET: TaskJob
+        public ActionResult PracticeView()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             var tasks = db.Tasks.Include(t => t.FamilyMember);

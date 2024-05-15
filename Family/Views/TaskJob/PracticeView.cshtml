@@ -1,0 +1,26 @@
+﻿@*@model Family.Models.Task*@
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2>Practice views</h2>
+<div class="form-group">
+    @Html.Label("FirstName", htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.TextBox("FirstName","John",
+                new
+                {
+                    @class= "redtextbox",@readonly="true"
+                })
+    </br>
+    @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.Password("Password")
+    </br>
+    @Html.Label("Comments", htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.TextArea("Comments", "", 5, 20, null)
+    <br />
+    @Html.Label("Id", htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.Hidden("Id")
+
+
+
+</div>
