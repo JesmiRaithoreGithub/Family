@@ -79,7 +79,27 @@ namespace Family.Controllers
             Grocery grocery= groceryRepository.Groceries.Single(gr => gr.GroceryItemId == id);
             var groceryList = groceryRepository.GroceryTypes.ToList();
 
-            ViewBag.GroceryItemTypeId = new SelectList(groceryList, "GroceryItemTypeId", "GroceryItemTypeName");
+            //ViewBag.GroceryItemTypeId = new SelectList(groceryList, "GroceryItemTypeId", "GroceryItemTypeName");
+
+
+           
+                List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+                foreach (GroceryType gr in groceryRepository.GroceryTypes)
+                {
+                    SelectListItem selectListItem = new SelectListItem
+                    {
+                        Text = gr.GroceryItemTypeName,
+                        Value = gr.GroceryItemTypeId.ToString()
+
+                        //Selected = department.IsSelected.HasValue ? department.IsSelected.Value : false
+                    };
+                    selectListItems.Add(selectListItem);
+                }
+
+                ViewBag.GroceryItemTypeId = selectListItems;
+              
+         
 
             return View(grocery);
         }
