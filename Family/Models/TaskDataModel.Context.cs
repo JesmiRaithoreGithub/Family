@@ -29,5 +29,6 @@ namespace Family.Models
         public virtual DbSet<Task> Tasks { get; set; }
 
         public System.Data.Entity.DbSet<Family.Models.TaskFamilyTotal> TaskFamilyTotals { get; set; }
+
     }
 }

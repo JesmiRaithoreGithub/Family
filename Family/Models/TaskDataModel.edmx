@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FamilyMember">
           <Key>
             <PropertyRef Name="FamilyMemberId" />
           </Key>
           <Property Name="FamilyMemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="100" />
-          <Property Name="Gender" Type="nchar" MaxLength="10" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
           <Property Name="City" Type="nchar" MaxLength="50" />
           <Property Name="Job" Type="nchar" MaxLength="100" />
           <Property Name="FamilyMemberTypeId" Type="int" />
@@ -24,31 +24,14 @@
           <Property Name="Task_Name" Type="varchar" MaxLength="50" />
           <Property Name="Task_Preparation" Type="varchar(max)" />
           <Property Name="Task_Duration" Type="int" />
-          <Property Name="Task_Status" Type="nchar" MaxLength="10" />
+          <Property Name="Task_Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Task_FamilyMemberId" Type="int" />
         </EntityType>
-        <Association Name="FK_Task_FamilyMember">
-          <End Role="FamilyMember" Type="Self.FamilyMember" Multiplicity="0..1" />
-          <End Role="Task" Type="Self.Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FamilyMember">
-              <PropertyRef Name="FamilyMemberId" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="Task_FamilyMemberId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="FamilyMember" EntityType="Self.FamilyMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Task_FamilyMember" Association="Self.FK_Task_FamilyMember">
-            <End Role="FamilyMember" EntitySet="FamilyMember" />
-            <End Role="Task" EntitySet="Task" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -72,7 +55,7 @@
           <Property Name="Task_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Task_Preparation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Task_Duration" Type="Int32" />
-          <Property Name="Task_Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Task_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Task_FamilyMemberId" Type="Int32" />
           <NavigationProperty Name="FamilyMember" Relationship="Self.FK_Task_FamilyMember" FromRole="Task" ToRole="FamilyMember" />
         </EntityType>
