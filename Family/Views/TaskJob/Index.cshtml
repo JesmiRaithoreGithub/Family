@@ -41,7 +41,21 @@
             @Html.DisplayFor(modelItem => item.Task_Duration)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Task_Status)
+            @*@Html.DisplayFor(modelItem => item.Task_Status)*@
+
+            @if (item.Task_Status.Equals("1"))
+            {
+                @Html.DisplayName("Started")
+            }
+            else if (item.Task_Status.Equals("2"))
+            {
+                @Html.DisplayName("Ongoing")
+            }
+            else if (item.Task_Status.Equals("3"))
+            {
+                @Html.DisplayName("Completed")
+            }
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FamilyMember.Name)

@@ -47,9 +47,9 @@
 
             @Html.DropDownList("Task_Status", new List<SelectListItem>
        {
-           new SelectListItem{ Text= "Started", Value= "Started"},
-           new SelectListItem{Text="Ongoing", Value="Ongoing"},
-           new SelectListItem{Text="Completed", Value="Completed"}
+           new SelectListItem{Text="Started", Value="1"},
+           new SelectListItem{Text="Ongoing", Value="2"},
+           new SelectListItem{Text="Completed", Value="3"}
 
        },"Select Status")
          
@@ -61,7 +61,7 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Task_FamilyMemberId, "Task_FamilyMemberId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Task_FamilyMemberId, "Select FamilyMember", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("Task_FamilyMemberId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Task_FamilyMemberId, "", new { @class = "text-danger" })

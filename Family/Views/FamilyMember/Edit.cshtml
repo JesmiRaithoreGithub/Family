@@ -29,36 +29,37 @@
                 @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
 
-                    @*@Html.DropDownList("Gender", new List<SelectListItem>
+                    @Html.DropDownList("Gender", new List<SelectListItem>
         {
             new SelectListItem{ Text="Male", Value="Male"},
             new SelectListItem{ Text="Female", Value= "Female"}
-        }, "Select Gender")*@
+        }, "Select Gender")
 
                     @*@Html.EditorFor(model => model.Gender)*@
-                    @Html.Display(Model.Gender)
-                    @if (Model.Gender == "Female")
-                        {
-                            @Html.DropDownList("Gender", new List<SelectListItem>
-                             {
-                           new SelectListItem{ Text="Male", Value="Male"},
-                           new SelectListItem{ Text="Female", Value="Female"},
-                       }/*, "Select Gender"*/)
-                        }
-                        else 
-                        {
-                            @Html.DropDownList("Gender", new List<SelectListItem>
-                            {
-                          new SelectListItem{ Text="Female", Value="Female"},
-                       new SelectListItem{ Text="Male", Value="Male"}}/*, "Select Gender"*/)
-                        }
+                    @*@Html.Display(Model.Gender)
+        @if (Model.Gender == "Female")
+            {
+                @Html.DropDownList("Gender", new List<SelectListItem>
+                 {
+               new SelectListItem{ Text="Male", Value="Male"},
+               new SelectListItem{ Text="Female", Value="Female"},
+           }/*, "Select Gender"*/)
+            }
+            else
+            {
+                @Html.DropDownList("Gender", new List<SelectListItem>
+                {
+              new SelectListItem{ Text="Female", Value="Female"},
+           new SelectListItem{ Text="Male", Value="Male"}}/*, "Select Gender"*/)
+            }*@
 
 
-                        @*@Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
 
 
                     @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
 
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
 
                 </div>
             </div>

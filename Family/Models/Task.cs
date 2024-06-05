@@ -13,11 +13,12 @@ namespace Family.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+
     public partial class Task
     {
         [Key]
         public int Task_Id { get; set; }
-       
+
         [Display(Name = "Task Name")]
         public string Task_Name { get; set; }
         [Required]
