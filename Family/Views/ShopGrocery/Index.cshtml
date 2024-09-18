@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopGroceryBusinessLayer.Models.Grocery>
+﻿@model IEnumerable<ShopGroceryBusinessLayer.Models.GroceryViewModel>
+    
 
 @{
     ViewBag.Title = "Index";
@@ -35,10 +36,10 @@
                     @Html.DisplayFor(modelItem => item.NoOfGroceryItem)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GroceryItemTypeId)
-
-
-                <td>
+                    @*@Html.DisplayFor(modelItem => item.GroceryItemTypeId)*@
+                    @Html.DisplayFor(modelItem => item.GroceryItemTypeName)
+                    @ViewBag.GroceryItemTypeName
+<td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.GroceryItemId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.GroceryItemId }) |
                     @*@Html.ActionLink("Delete", "Delete", new { id=item.GroceryItemId })*@

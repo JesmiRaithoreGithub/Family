@@ -12,5 +12,6 @@ namespace ShopGroceryBusinessLayer.Models
         public int GroceryItemTypeId { get; set; }
         [Required]
         public string GroceryItemTypeName { get; set; }
+        public virtual ICollection<Grocery> Groceries { get; set; }
     }
 }
