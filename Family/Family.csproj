@@ -139,6 +139,7 @@
     <Compile Include="Controllers\FamilyMemberTypeController.cs" />
     <Compile Include="Controllers\GroceryTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IActionResult.cs" />
     <Compile Include="Controllers\ShopGroceryController.cs" />
     <Compile Include="Controllers\TaskJobController.cs" />
     <Compile Include="Global.asax.cs">

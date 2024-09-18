@@ -11,14 +11,92 @@ namespace Family.Controllers
     public class ShopGroceryController : Controller
     {
         // GET: Grocery
-        public ActionResult Index()
+
+        public ActionResult Index1()
         {
             GroceryRepository groceryRepository = new GroceryRepository();
 
             List<Grocery> groceries = groceryRepository.Groceries.ToList();
 
+            var groceryList = groceryRepository.GroceryTypes.ToList();
+
+            var query = from gt in groceryList
+                        join g in groceries on gt.GroceryItemTypeId equals g.GroceryItemTypeId
+                        where g.GroceryItemTypeId == gt.GroceryItemTypeId
+                        select new
+                        {
+                            gt.GroceryItemTypeName
+                        };
+
+            //ViewBag.GroceryItemTypeName = query.ToList(); 
+
+            //var result = query.ToList();
+            string GroceryItemTypeName = null;
+            foreach (var result in query)
+            {
+                GroceryItemTypeName = result.GroceryItemTypeName;
+
+                ViewBag.GroceryItemTypeName = GroceryItemTypeName;
+
+            }
+            GroceryViewModel groceryViewModel = new GroceryViewModel();
+
+            List<GroceryViewModel> groceryViewModelList = groceries.Select(x => new GroceryViewModel
+            {
+                GroceryItemName = x.GroceryItemName,
+                NoOfGroceryItem = x.NoOfGroceryItem,
+                GroceryItemId = x.GroceryItemId,
+                GroceryItemTypeId = x.GroceryItemTypeId,
+                //GroceryItemTypeName=x.GroceryType.GroceryItemTypeName
+                //GroceryItemTypeName = GroceryItemTypeName
+                //GroceryItemTypeName = groceryList.Where(y => y.GroceryItemTypeId == x.GroceryItemTypeId)
+                //.Select(y => y.GroceryItemTypeName).ToString()
+
+            }).ToList();
+
+            return View(groceryViewModelList);
+           
+            }
+
+        public ActionResult Index()
+        {
+            GroceryRepository groceryRepository = new GroceryRepository();
+
+            var groceries = (from g in groceryRepository.Groceries
+                             join gt in groceryRepository.GroceryTypes
+                             on g.GroceryItemTypeId equals gt.GroceryItemTypeId
+                             select new GroceryViewModel
+                             {
+                                 GroceryItemId = g.GroceryItemId,
+                                 GroceryItemName = g.GroceryItemName,
+                                 NoOfGroceryItem=g.NoOfGroceryItem,
+                                 GroceryItemTypeName = gt.GroceryItemTypeName
+                             }).ToList();
+
             return View(groceries);
         }
+
+        /* public ActionResult Index()
+         {
+             GroceryRepository groceryRepository = new GroceryRepository();
+
+             List<Grocery> groceries = groceryRepository.Groceries.ToList();
+
+             var groceryList = groceryRepository.GroceryTypes.ToList();
+             var query = from gt in groceryList
+                         join g in groceries on gt.GroceryItemTypeId equals g.GroceryItemTypeId
+                         where g.GroceryItemTypeId == gt.GroceryItemTypeId
+                         select new
+                         {
+                             gt.GroceryItemTypeName
+                         };
+             // var result = query.FirstOrDefault();
+            // string GroceryItemTypeName = null;
+
+
+             ViewBag.GroceryItemTypeName = query.ToList();
+             return View(groceries);
+         }*/
 
         /* public List<Grocery> Index()
          {

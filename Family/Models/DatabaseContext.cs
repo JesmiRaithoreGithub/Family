@@ -15,7 +15,7 @@ namespace Family.Models
 
         public System.Data.Entity.DbSet<ShopGroceryBusinessLayer.Models.Grocery> Groceries { get; set; }
 
-        public DbSet<GroceryType> GroceryTypes { get; set; }
+        public System.Data.Entity.DbSet<ShopGroceryBusinessLayer.Models.GroceryType> GroceryTypes { get; set; }
 
         
 
