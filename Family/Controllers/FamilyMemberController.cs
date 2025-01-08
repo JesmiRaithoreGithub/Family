@@ -142,7 +142,7 @@ namespace Family.Controllers
             }
             return View(familyMemberDetails);  
         }
-           /*Delete functionality*/
+           /*Delete functionality for FamilyMember*/
         [HttpPost]
         public ActionResult Delete(int id)
         {
